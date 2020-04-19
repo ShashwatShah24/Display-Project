@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>View</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body style="background-color:darkslateblue; ; text-align: center">
+
+  <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-top: 50px;">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#">
+      <img src="/static/airtel-logo-white-text-horizontal.jpg" alt="logo" style="width:100px;">
+    </a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  </div>
+
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+
+        <h5 style="margin-top: 35px; text-align: left;padding-left: 50px;"> Projects</h5>
+        <table id="tbl" class="table  table-hover" style="margin-top: 25px;width:300px;">
+          <thead>
+            {% for i in rows %}
+            <tr>
+              <th> {{ i[1] }} </th>
+            </tr>
+            {% endfor %}
+
+          </thead>
+        </table>
+
+        <script>
+          const tbl = document.getElementById('tbl');
+
+          tbl.addEventListener('click', event => {
+            const el = event.target;
+            var a = el.innerText
+            document.getElementById("tab").value = a
+
+            document.getElementById('myform').submit();
+          });
+        </script>
+
+        <div class="container">
+          <form id="myform" class="form-horizontal" action="/viewTable" method="post">
+
+            <input type="hidden" class="form-control" id="tab" name="tab">
+
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <h1 style="margin-top: 10px;  text-align: center">Project :{{ b }}</h1>
+         <h2 style="margin-top: 30px;">Authors :{{ c }}</h2>
+         <h5 style="margin-top: 30px;">Project Desciption</h5>
+          <h5 style="margin-top: 10px;">{{ d}}</h5>
+
+      </div>
+    </div>
+</body>
+
+</html>
+
+
+

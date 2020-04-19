@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Feedback</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" /> 
+
+</head>
+<body style="background-color:lightgrey;">
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-top: 50px;">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="/static/airtel-logo-white-text-horizontal.jpg" alt="logo" style="width:100px;">
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+  </ul>
+</nav>
+
+<div class="container" style="background-color:white ; margin-top: 50px;width:400px; border-radius: 50px" > 
+  <form class="form-horizontal" action = "/savedetails121"  method="post"  enctype="multipart/form-data" >
+    <div class="form-group">
+      <label class="control-label col-sm-10" for="Name" style="padding-top:15px">Project Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="Name" placeholder="Enter Project Name" name="Name" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-10" for="Age">Author:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Author" placeholder="Enter Author" name="Author">
+      </div>
+    </div>
+
+        <div class="form-group">
+      <label class="control-label col-sm-10" for="Feedback">Project:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="Feedback" placeholder="Enter Project Description" name="Feedback">
+      </div>
+    </div>
+
+   
+
+    <!--  <div class="form-group">  
+     
+      <div class="col-sm-offset-2 col-sm-3">
+      	<div class="align-self-center mx-auto">
+        <button type="submit" value="Submit"> Submit</button>
+      </div>
+</div>
+    </div>
+ --> 
+        <div class="text-center"> 
+            <button type="submit" class="btn btn-default float" style="border: 2px solid red;">Submit</button>  
+        </div> 
+
+          <h4 style="margin-top: 65px; text-align: left;padding-left: 100px;"> {{msg}}</h4>
+
+  </form>
+</div>
+
+</body>
+</html>
