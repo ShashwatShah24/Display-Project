@@ -29,6 +29,8 @@ def viewTable():
 	cur = con.cursor()
 	cur.execute("select * from Steps_Table LEFT OUTER JOIN Feedback ON Steps_Table.Feedback_id = Feedback.id  where Feedback.name = '{0}'".format(projectName))
 	rows1 = cur.fetchall()
+	cur.execute("select * from  Feedback where Feedback.name = '{0}'".format(projectName))
+	rows0 = cur.fetchall()
 	for i in rows1:
 		Projectname = i[5]
 		Lead = i[6]
@@ -41,7 +43,7 @@ def viewTable():
 		phase.append(i[2])
 		AssignedDevloper.append(i[3])
 	print(phase,AssignedDevloper)
-	return render_template("view.html", rows=rows, rows1=rows1, Projectname=Projectname, Lead=Lead, AssignedBy=AssignedBy, Assigned_Date=Assigned_Date, Devloper=Devloper, Description=Description,phase=phase,AssignedDevloper=AssignedDevloper)
+	return render_template("view.html", rows0=rows0,rows=rows, rows1=rows1, Projectname=Projectname, Lead=Lead, AssignedBy=AssignedBy, Assigned_Date=Assigned_Date, Devloper=Devloper, Description=Description,phase=phase,AssignedDevloper=AssignedDevloper)
 
 
 if __name__ == "__main__":

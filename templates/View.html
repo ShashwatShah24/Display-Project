@@ -26,7 +26,8 @@
         <a class="nav-link" href="/" style="color: white;">Home</a>
       </li>
     </ul>
-
+    
+      <button onclick="TestsFunction()" class="btn btn-default float"  style= "color: white;">Phase of project</button>
   </nav>
 
   </div>
@@ -56,7 +57,10 @@
             document.getElementById("tab").value = a
 
             document.getElementById('myform').submit();
+            $scope.trunOn = true;
           });
+          
+          
         </script>
 
         <div class="container">
@@ -68,30 +72,41 @@
         </div>
       </div>
       <div class="col-sm-9">
+        {% for a in rows0 %}
         <div style="margin-top: 10px;  text-align: center; padding-left:85px; padding-right:85px;">
-          <h5 class="shadow-sm p-4 mb-4 bg-white"><b>Project<b> :{{ Projectname}}</h5>
+          <h5 class="shadow-sm p-4 mb-4 bg-white"><b>Project<b> :{{ a[5] }}</h5>
         </div>
 
         <div class="row" style="margin-top: 40px;">
           <div class="col" style="text-align:left; padding-left:100px">
-            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Lead : </b>{{ Lead }}</h6>
+            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Lead : </b>{{ a[2] }}</h6>
           </div>
           <div class="col" style="text-align:right;padding-right:100px">
-            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Devloper : </b>{{ Devloper}}</h6>
+            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Devloper : </b>{{ a[5] }}</h6>
           </div>
         </div>
         <div class="row " style="margin-top: 10px;">
           <div class="col" style="text-align:left; padding-left:100px">
-            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned By : </b>{{ AssignedBy }}</h6>
+            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned By : </b>{{ a[3] }}</h6>
           </div>
           <div class="col" style="text-align:right; padding-right:100px">
-            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned Date : </b>{{ Assigned_Date}}</h6>
+            <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned Date : </b>{{ a[4]}}</h6>
           </div>
         </div>
-
+        
         <div style="padding-left:85px; padding-right:85px;">
-          <h6 style="margin-top: 10px;" class="shadow-sm p-4 mb-4 bg-white""><b>Project Description</b>: <i>{{ Description}}</i></h6>
+          <h6 style="margin-top: 10px;" class="shadow-sm p-4 mb-4 bg-white""><b>Project Description</b>: <i>{{ a[6] }}</i></h6>
       </div>
+      {% endfor %}
+
+      
+      <script>
+function TestsFunction() {
+    var T = document.getElementById("myDIV");
+    T.style.display = "block";
+}
+        </script>
+        <div id="myDIV" style="display:none">
         <div class=" row" style="margin-top: 10px;">
             <div class="col" style="text-align:left; padding-left:100px">{% for k in phase %}
               <h6 class="shadow-sm p-4 mb-4 bg-white"><b>phase : </b>{{k}}</h6>
@@ -102,6 +117,7 @@
               {% endfor %}
             </div>
         </div>
+      </div>
         <!-- <h5 style="margin-top: 10px;">{% for k in phase %}{{k}}{% endfor %}</h5> -->
         <!-- <h5 style="margin-top: 10px;">{% for k2 in AssignedDevloper %}{{k2}}{% endfor %}</h5> -->
       </div>
