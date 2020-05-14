@@ -125,159 +125,172 @@
     </style>
 </head>
 
-<body style="background-color:#5CDB95">
+<body style="background-color:darkslateblue">
 
-    <nav class="navbar navbar-expand-sm bg-light navbar-light" style="margin-top: 50px;">
+    <nav class="navbar navbar-expand-sm" style="height:50px;background-color:#EE1C25;">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
             <img src="/static/airtel-logo-white-text-horizontal.jpg" alt="logo" style="width:100px;">
         </a>
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/" style="color: white;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/status" style="color: white;">Update Status </a>
+            </li>
+        </ul>
 
     </nav>
-    
-    <div class="container" style="background-color:white ; margin-top: 50px;width:fit-content; border-radius: 50px" > 
 
-                <h4 style=" text-align: center;margin-top:15px;"> Display Project</h4>
+    <div class="container">
 
-                <div class="container"  style="background-color:whitesmoke ;margin-top:30px; border-radius:5%;margin-right: 0cm;">
-                    {# Show all subforms #}
-                    <form id="feedback01-form" action="" method="POST" role="form">
-                        {{ form.hidden_tag() }}
-
-
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="name" style="padding-top:15px" >Project Name</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="name" placeholder="Enter Project Name" name="name"
-                                    required>
-                            </div>
-
-                        </div>
+        <h4 class="shadow-sm p-4 mb-4 bg-white"
+            style="text-align: center; padding-left:inherit; padding-right:inherit; margin-top: 10px;width:inherit"><b>
+                Display Project form<b></h4>
+    </div>
+        <div class="container"
+            style="background-color:whitesmoke ;margin-top:30px;width:fit-content; border-radius:5%;">
+            {# Show all subforms #}
+            <form id="feedback01-form" action="" method="POST" role="form">
+                {{ form.hidden_tag() }}
 
 
-                        <div class="form-check-inline">
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="name" style="padding-top:15px">Project Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="name" placeholder="Enter Project Name" name="name"
+                            required>
+                    </div>
 
-                            <label class="control-label col-sm-2" for="Devloper" style="padding-top:15px">Devloper
-                                Name:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="Devloper"
-                                    placeholder="Enter Devloper name" name="Devloper" required>
-                            </div>
-
-                            <label class="control-label col-sm-2" for="olmid" style="padding-top:15px;padding-left: 30px;">Lead</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="Lead" placeholder="Enter Lead name"
-                                    name="Lead" required>
-                            </div>
+                </div>
 
 
-                        </div>
+                <div class="form-check-inline">
 
-                        <br>
-                        <br>
+                    <label class="control-label col-sm-2" for="Devloper" style="padding-top:15px">Devloper
+                        Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="Devloper" placeholder="Enter Devloper name"
+                            name="Devloper" required>
+                    </div>
 
-
-                        <div class="form-check-inline">
-                            <label class="control-label col-sm-2" for="Assigned_By" style="padding-top:15px">Assigned_By</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="Assigned_By" placeholder="Enter Assigned_By"
-                                    name="Assigned_By" required>
-                            </div>
-
-                            <label class="control-label col-sm-2" for="Assigned_Date"
-                                style="padding-top:15px">Assigned_Date:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="Assigned_Date" placeholder="Enter Assigned_Date"
-                                    name="Assigned_Date" required>
-                            </div>
-                        </div>
-
-                        <br>
-                        <br>
+                    <label class="control-label col-sm-2" for="olmid"
+                        style="padding-top:15px;padding-left: 30px;">Lead</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="Lead" placeholder="Enter Lead name" name="Lead"
+                            required>
+                    </div>
 
 
-      
+                </div>
+
+                <br>
+                <br>
+
+
+                <div class="form-check-inline">
+                    <label class="control-label col-sm-2" for="Assigned_By" style="padding-top:15px">Assigned_By</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="Assigned_By" placeholder="Enter Assigned_By"
+                            name="Assigned_By" required>
+                    </div>
+
+                    <label class="control-label col-sm-2" for="Assigned_Date"
+                        style="padding-top:15px">Assigned_Date</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="Assigned_Date" placeholder="Enter Assigned_Date"
+                            name="Assigned_Date" required>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-5" for="name" style="padding-top:15px">Status </label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="Status" placeholder="Status" name="Status" required>
+                    </div>
+
+                </div>
 
 
 
-                        <div class="form-group">
-                            <div id="subforms-container">
+                <div class="form-group">
+                    <div id="subforms-container">
 
-                                {% for subform in form.step01 %}
-                                <div id="feedback01-{{ loop.index0 }}-form" class="subform"
-                                    data-index="{{ loop.index0 }}">
-                                    <label class="control-label col-sm-5" for="remarks"
-                                        style="padding-top:15px">{{ subform.Phase.label }} and
-                                        {{ subform.AssignedDev.label }}</label>
-                                    <div class="col-sm-6">
-
-                                        {{ subform.Phase }}
-                                        {{ subform.AssignedDev}}
-
-
-                                        <a id="add" href="#" style="border: 2px solid red;">Add Phase</a>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-check-inline">
-                                <label class="control-label col-sm-3" for="Description"
-                                    style="padding-top:15px">Description:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="Description" placeholder="Enter Description"
-                                        name="Description" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default float"
-                                style="border: 2px solid red;">Submit</button>
-                        </div>
-
-                        </script>
-
-                        <H3 style="margin-top: 10px; text-align: left;padding-left: 100px; text-align: center;">
-                            {{ MSG }}</H3>
-
-                    </form>
-
-                    {% if form.errors %}
-                    {{ form.errors }}
-                    {% endif %}
-
-                    {# Form template #}
-
-                    <div id="feedback01-_-form" class="is-hidden" data-index="_">
-                        <div class="form-check-inline">
-
-                            <label for="step01-_-Phase" class="control-label col-sm-1" for="remarks"
-                                style="padding-top:15px">New Phase</label>
-                            <div class="col-sm-3">
-                                <input id="step01-_-Phase" class="form-control" placeholder="Enter New phase"
-                                    name="step01-_-Phase" type="text" value="">
-                            </div>
-
-                            <label for="step01-_-AssignedDev" class="control-label col-sm-1" for="remarks"
-                                style="padding-top:15px">Assigned Devloper</label>
+                        {% for subform in form.step01 %}
+                        <div id="feedback01-{{ loop.index0 }}-form" class="subform" data-index="{{ loop.index0 }}">
+                            <label class="control-label col-sm-5" for="remarks"
+                                style="padding-top:15px">{{ subform.Phase.label }} and
+                                {{ subform.AssignedDev.label }}</label>
                             <div class="col-sm-6">
-                                <input id="step01-_-AssignedDev" name="step01-_-AssignedDev" class="form-control"
-                                    placeholder="Assigned Devloper" type="text">
+
+                                {{ subform.Phase }}
+                                {{ subform.AssignedDev}}
+
+
+                                <a id="add" href="#" style="border: 2px solid red;">Add Phase</a>
                             </div>
-                            <a class="remove" href="#">Remove</a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
 
-            </div>
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <label class="control-label col-sm-4" for="Description"
+                            style="padding-top:15px">Description </label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="Description" placeholder="Enter Description"
+                                name="Description" required>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="text-center">
+                    <button type="submit" class="btn btn-default float" style="border: 2px solid red;">Submit</button>
+                </div>
+
+                </script>
+
+                <H3 style="margin-top: 10px; text-align: left;padding-left: 100px; text-align: center;">
+                    {{ MSG }}</H3>
+
+            </form>
+
+            {% if form.errors %}
+            {{ form.errors }}
+            {% endif %}
+
+            {# Form template #}
+
+            <div id="feedback01-_-form" class="is-hidden" data-index="_">
+                <div class="form-check-inline">
+
+                    <label for="step01-_-Phase" class="control-label col-sm-1" for="remarks"
+                        style="padding-top:15px">New Phase</label>
+                    <div class="col-sm-3">
+                        <input id="step01-_-Phase" class="form-control" placeholder="Enter New phase"
+                            name="step01-_-Phase" type="text" value="">
+                    </div>
+
+                    <label for="step01-_-AssignedDev" class="control-label col-sm-2" for="remarks"
+                        style="padding-top:15px">Assigned Devloper</label>
+                    <div class="col-sm-3">
+                        <input id="step01-_-AssignedDev" name="step01-_-AssignedDev" class="form-control"
+                            placeholder="Assigned Devloper" type="text">
+                    </div>
+                    <a class="remove" href="#">Remove</a>
+                </div>
+            </div>
         </div>
+
+    </div>
+
+    </div>
 
 </body>
 

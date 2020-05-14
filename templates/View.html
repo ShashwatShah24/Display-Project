@@ -74,14 +74,14 @@
       <div class="col-sm-9">
         {% for a in rows0 %}
         <div style="margin-top: 10px;  text-align: center; padding-left:85px; padding-right:85px;">
-          <h5 class="shadow-sm p-4 mb-4 bg-white"><b>Project<b> :{{ a[5] }}</h5>
+          <h5 class="shadow-sm p-4 mb-4 bg-white"><b>Project</b> :{{ a[1] }}      ||  <i><b> Status :</b></i> {{ a[8] }}</h5>
         </div>
 
         <div class="row" style="margin-top: 40px;">
           <div class="col" style="text-align:left; padding-left:100px">
             <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Lead : </b>{{ a[2] }}</h6>
           </div>
-          <div class="col" style="text-align:right;padding-right:100px">
+          <div class="col" style="text-align:left;padding-right:100px">
             <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Devloper : </b>{{ a[5] }}</h6>
           </div>
         </div>
@@ -89,7 +89,7 @@
           <div class="col" style="text-align:left; padding-left:100px">
             <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned By : </b>{{ a[3] }}</h6>
           </div>
-          <div class="col" style="text-align:right; padding-right:100px">
+          <div class="col" style="text-align:left; padding-right:100px">
             <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned Date : </b>{{ a[4]}}</h6>
           </div>
         </div>
@@ -112,7 +112,7 @@ function TestsFunction() {
               <h6 class="shadow-sm p-4 mb-4 bg-white"><b>phase : </b>{{k}}</h6>
               {% endfor %}
             </div>
-            <div class="col" style="text-align:right; padding-right:100px">{% for k2 in AssignedDevloper %}
+            <div class="col" style="text-align:left; padding-right:100px">{% for k2 in AssignedDevloper %}
               <h6 class="shadow-sm p-4 mb-4 bg-white"><b>Assigned Devloper : </b>{{k2}}</h6>
               {% endfor %}
             </div>

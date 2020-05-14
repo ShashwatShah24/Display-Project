@@ -44,6 +44,7 @@ class Step01(db.Model):
     Devloper = db.Column(db.String(100)) 
     Description = db.Column(db.String(500))
     Submittiontime = db.Column(db.String(100))
+    Status = db.Column(db.String(10))
 
 def __init__(self, name):
    self.name = name
@@ -83,7 +84,7 @@ def index():
     MSG=""
     if form.validate_on_submit():
         # Create step02
-        new_step02 = Step01(name=request.form.get("name"),Lead=request.form.get("Lead"),Assigned_By=request.form.get("Assigned_By"),Assigned_Date=request.form.get("Assigned_Date"),Devloper=request.form.get("Devloper"),Description=request.form.get("Description"),Submittiontime=now)
+        new_step02 = Step01(name=request.form.get("name"),Lead=request.form.get("Lead"),Assigned_By=request.form.get("Assigned_By"),Assigned_Date=request.form.get("Assigned_Date"),Devloper=request.form.get("Devloper"),Description=request.form.get("Description"),Submittiontime=now,Status=request.form.get("Status"))
 
         db.session.add(new_step02)
 
@@ -103,6 +104,24 @@ def index():
         'index.html',
         form=form,
         Feedback=Feedback,MSG=MSG
+    )
+
+@app.route("/status")
+def staus():
+    return render_template("status.html")
+
+@app.route("/savedetails121", methods=["POST"])
+def savedetails121():
+    projectName = request.form["Name"]
+    status = request.form["status"]
+    con = sqlite3.connect("q12.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("Update Feedback set Status = ? where name = ?",[status,projectName])
+    con.commit()
+    MSG="Status updated"
+    return render_template(
+        'status.html',MSG=MSG
     )
 
 
