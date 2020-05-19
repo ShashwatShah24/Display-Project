@@ -35,7 +35,7 @@ def viewTable():
 	for i in rows1:
 		phase.append(i[2])
 		AssignedDevloper.append(i[3])
-	print(phase,AssignedDevloper)
+	
 	return render_template("view.html", rows0=rows0,rows=rows, rows1=rows1,phase=phase,AssignedDevloper=AssignedDevloper)
 
 	

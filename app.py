@@ -84,7 +84,7 @@ def index():
     MSG=""
     if form.validate_on_submit():
         # Create step02
-        new_step02 = Step01(name=request.form.get("name"),Lead=request.form.get("Lead"),Assigned_By=request.form.get("Assigned_By"),Assigned_Date=request.form.get("Assigned_Date"),Devloper=request.form.get("Devloper"),Description=request.form.get("Description"),Submittiontime=now,Status=request.form.get("Status"))
+        new_step02 = Step01(name=request.form.get("name"),Lead=request.form.get("Lead"),Assigned_By=request.form.get("Assigned_By"),Assigned_Date=request.form.get("Assigned_Date"),Devloper=request.form.get("Devloper"),Description=request.form.get("Description"),Submittiontime=now,Status=request.form.get("Status", None))
 
         db.session.add(new_step02)
 
@@ -97,7 +97,7 @@ def index():
         #print(request.form)
 
         db.session.commit()
-        MSG=" Thank you"
+        MSG="Submitted"
     Feedback = Step01.query
     print(Feedback)
     return render_template(
@@ -113,11 +113,21 @@ def staus():
 @app.route("/savedetails121", methods=["POST"])
 def savedetails121():
     projectName = request.form["Name"]
-    status = request.form["status"]
+    status =request.form.get("Status", None)
+    Lead = request.form["Lead"]
+    projectName = request.form["Name"]
+    Assigned_By = request.form["Assigned_By"]
+    Assigned_Date = request.form["Assigned_Date"]
+    Devloper = request.form["Devloper"]
+    Description = request.form["Description"]
+    now = datetime.datetime.now()
+    now=now.strftime("%Y-%m-%d %H:%M:%S")
+
     con = sqlite3.connect("q12.db")
     con.row_factory = sqlite3.Row
     cur = con.cursor()
-    cur.execute("Update Feedback set Status = ? where name = ?",[status,projectName])
+    cur.execute("Update Feedback set Status = ?,Lead=?,Assigned_By=?,Assigned_Date=?,Devloper=?,Description=?,Submittiontime=? where name = ?",[status,Lead,Assigned_By,Assigned_Date,Devloper,Description,now,projectName])
+    print("YOYO")
     con.commit()
     MSG="Status updated"
     return render_template(

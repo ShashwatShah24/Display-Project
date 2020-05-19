@@ -151,6 +151,8 @@
     </div>
         <div class="container"
             style="background-color:whitesmoke ;margin-top:30px;width:fit-content; border-radius:5%;">
+            <H3 style="margin-top: 10px; text-align: left;padding-left: 100px; text-align: center;">
+                {{ MSG }}</H3>
             {# Show all subforms #}
             <form id="feedback01-form" action="" method="POST" role="form">
                 {{ form.hidden_tag() }}
@@ -211,7 +213,11 @@
                 <div class="form-group">
                     <label class="control-label col-sm-5" for="name" style="padding-top:15px">Status </label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="Status" placeholder="Status" name="Status" required>
+                        <select id="mySelect" name = "Status" required>
+                            <option value="Assigned">Assigned</option>
+                            <option value="On Track">On Track</option>
+                            <option value="Completed">Completed</option>
+                          </select>
                     </div>
 
                 </div>
@@ -226,8 +232,8 @@
                             <label class="control-label col-sm-5" for="remarks"
                                 style="padding-top:15px">{{ subform.Phase.label }} and
                                 {{ subform.AssignedDev.label }}</label>
-                            <div class="col-sm-6">
-
+                            <div class="col-sm-6" class="form-control">
+                                
                                 {{ subform.Phase }}
                                 {{ subform.AssignedDev}}
 
@@ -256,8 +262,7 @@
 
                 </script>
 
-                <H3 style="margin-top: 10px; text-align: left;padding-left: 100px; text-align: center;">
-                    {{ MSG }}</H3>
+
 
             </form>
 
