@@ -18,6 +18,7 @@ class StepForm(Form):
     """
     Phase = StringField('Phase')
     AssignedDev = StringField('AssignedDev')
+    phaseStatus = StringField('phaseStatus')
 
 class MainForm(FlaskForm):
     """Parent form."""
@@ -59,6 +60,7 @@ class Feedback01(db.Model):
 
     Phase = db.Column(db.String(100))
     AssignedDev = db.Column(db.String(100))
+    phaseStatus =  db.Column(db.String(100))
 
     # Relationship
     step02 = db.relationship(
@@ -127,13 +129,50 @@ def savedetails121():
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("Update Feedback set Status = ?,Lead=?,Assigned_By=?,Assigned_Date=?,Devloper=?,Description=?,Submittiontime=? where name = ?",[status,Lead,Assigned_By,Assigned_Date,Devloper,Description,now,projectName])
-    print("YOYO")
+    print("YOYOPY")
     con.commit()
     MSG="Status updated"
     return render_template(
         'status.html',MSG=MSG
     )
 
+@app.route("/index1")
+def index1():
+    global rows1
+    global rows
+    rows1 = []
+    rows = []
+    con = sqlite3.connect("q12.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("SELECT * FROM Feedback")
+    rows = cur.fetchall()
+    return render_template("View.html", rows=rows, rows1=rows1)
+
+
+@app.route("/viewTable", methods=["POST"])
+def viewTable():
+    PhaseStatus=[]
+    phase=[]
+    AssignedDevloper=[]
+    projectName = request.form["tab"]
+    print()
+    con = sqlite3.connect("q12.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("select * from Steps_Table LEFT OUTER JOIN Feedback ON Steps_Table.Feedback_id = Feedback.id  where Feedback.name = '{0}'".format(projectName))
+    rows1 = cur.fetchall()
+    cur.execute("select * from  Feedback where Feedback.name = '{0}'".format(projectName))
+    rows0 = cur.fetchall()
+	
+    for i in rows1:
+        PhaseStatus.append(i[4])
+        phase.append(i[2])
+        AssignedDevloper.append(i[3])
+        
+
+	
+    return render_template("view.html", rows0=rows0,rows=rows ,rows1=rows1,phase=phase,AssignedDevloper=AssignedDevloper,PhaseStatus=PhaseStatus)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8011,threaded=True)  
